@@ -1,0 +1,21 @@
+<h1>Listing raports</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @raports.each do |raport| %>
+  <tr>
+    <td><%= link_to 'Show', raport %></td>
+    <td><%= link_to 'Edit', edit_raport_path(raport) %></td>
+    <td><%= link_to 'Destroy', raport, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Raport', new_raport_path %>
