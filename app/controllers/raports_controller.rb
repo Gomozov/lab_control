@@ -1,6 +1,6 @@
 class RaportsController < ApplicationController
-  # GET /raports
-  # GET /raports.json
+  before_filter :login_required, :only => [:index, :show, :destroy]
+
   def index
     @raports = Raport.all
 
@@ -10,8 +10,6 @@ class RaportsController < ApplicationController
     end
   end
 
-  # GET /raports/1
-  # GET /raports/1.json
   def show
     @raport = Raport.find(params[:id])
 
@@ -21,27 +19,10 @@ class RaportsController < ApplicationController
     end
   end
 
-  # GET /raports/new
-  # GET /raports/new.json
-  def new
-    @raport = Raport.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @raport }
-    end
-  end
-
-  # GET /raports/1/edit
-  def edit
-    @raport = Raport.find(params[:id])
-  end
-
-  # POST /raports
-  # POST /raports.json
   def create
     @raport = Raport.new(params[:raport])
-
+    @ROM = params[:raport].delete(:ROM)
+    @user = User.find_or_create_by_code @ROM
     respond_to do |format|
       if @raport.save
         format.html { redirect_to @raport, notice: 'Raport was successfully created.' }
@@ -53,24 +34,6 @@ class RaportsController < ApplicationController
     end
   end
 
-  # PUT /raports/1
-  # PUT /raports/1.json
-  def update
-    @raport = Raport.find(params[:id])
-
-    respond_to do |format|
-      if @raport.update_attributes(params[:raport])
-        format.html { redirect_to @raport, notice: 'Raport was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @raport.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /raports/1
-  # DELETE /raports/1.json
   def destroy
     @raport = Raport.find(params[:id])
     @raport.destroy
