@@ -1,21 +1,18 @@
-<h1>Listing raports</h1>
-
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @raports.each do |raport| %>
-  <tr>
-    <td><%= link_to 'Show', raport %></td>
-    <td><%= link_to 'Edit', edit_raport_path(raport) %></td>
-    <td><%= link_to 'Destroy', raport, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+<div class="row">
+  <div class="span4">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Raport body</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @raports.each do |raport| %>
+          <tr>
+            <td><%= raport.body %></td>
+            <td><%= raport.created_at %></td>
+          </tr>
+        <% end %>
+      </tbody>  
 </table>
-
-<br />
-
-<%= link_to 'New Raport', new_raport_path %>

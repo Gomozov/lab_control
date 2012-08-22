@@ -8,10 +8,12 @@
 #  name            :string(255)
 #  ROM             :string(255)
 #  password_digest :string(255)
+#  email           :string(255)
+#  cardN           :string(255)
 #
 
 class User < ActiveRecord::Base
-   attr_accessible :name, :email,:cardN, :ROM, :password, :password_confirmation
+   attr_accessible :name, :email, :cardN, :ROM, :password, :password_confirmation
 
    validates :ROM, :presence => true, :uniqueness => true
                                         
@@ -19,7 +21,7 @@ class User < ActiveRecord::Base
                                         
    validates_presence_of :password      
 
-  def self.find_or_create_by_ROM (ROM)
-    first(:conditions => {:ROM => ROM}) || create(:ROM => ROM) 
+  def self.find_or_create_by_ROM (rom)
+    first(:conditions => {:ROM => rom}) || create!(:ROM => rom, :password => '1', :password_confirmation => '1') 
   end
 end

@@ -8,6 +8,8 @@
 #  name            :string(255)
 #  ROM             :string(255)
 #  password_digest :string(255)
+#  email           :string(255)
+#  cardN           :string(255)
 #
 
 require 'test_helper'

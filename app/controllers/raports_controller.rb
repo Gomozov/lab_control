@@ -5,7 +5,7 @@ class RaportsController < ApplicationController
     @raports = Raport.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @raports }
     end
   end
@@ -14,24 +14,18 @@ class RaportsController < ApplicationController
     @raport = Raport.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.json { render json: @raport }
     end
   end
 
   def create
     @raport = Raport.new(params[:raport])
-    @ROM = params[:raport].delete(:ROM)
-    @user = User.find_or_create_by_code @ROM
-    respond_to do |format|
+    @ROM = params[:raport].delete(:body)
+    @user = User.find_or_create_by_ROM @ROM
       if @raport.save
-        format.html { redirect_to @raport, notice: 'Raport was successfully created.' }
-        format.json { render json: @raport, status: :created, location: @raport }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @raport.errors, status: :unprocessable_entity }
+        redirect_to(users_path)
       end
-    end
   end
 
   def destroy

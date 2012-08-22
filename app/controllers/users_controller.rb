@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
   before_filter :login_required, :only => [:index, :edit, :update, :show, :destroy]
 
-  # GET /users
-  # GET /users.json
   def index
     @users = User.all
 
@@ -12,8 +10,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET /users/1
-  # GET /users/1.json
   def show
     @user = User.find(params[:id])
 
@@ -23,8 +19,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET /users/new
-  # GET /users/new.json
   def new
     @user = User.new
 
@@ -34,7 +28,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
   end
@@ -65,8 +58,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.json
   def destroy
     @user = User.find(params[:id])
     @user.destroy
