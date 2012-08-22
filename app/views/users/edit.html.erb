@@ -1,6 +1,28 @@
-<h1>Editing user</h1>
+<h2>Edit user</h2>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<%= form_for (@user) do |f| %>
+  <%= render 'layouts/error_messages', :object => f.object %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :cardN %>
+    <%= f.text_field :cardN %>
+  </div>
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation, "Confirmation" %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div class="submit">
+    <%= f.submit "Update", :class => 'btn btn-primary' %>
+  </div>
+<% end %> 

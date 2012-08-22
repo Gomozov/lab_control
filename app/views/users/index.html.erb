@@ -1,10 +1,14 @@
-<table>
+<div class="row">
+  <div class="span4">
+    <table class="table">
+      <thead>
   <tr>
     <th></th>
     <th></th>
     <th></th>
   </tr>
-
+      </thead>
+      <tbody>
 <% @users.each do |user| %>
   <tr>
     <td><%= user.ROM %></td>
@@ -12,4 +16,5 @@
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
   </tr>
 <% end %>
+</tbody>
 </table>

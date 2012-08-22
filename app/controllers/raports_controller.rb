@@ -23,6 +23,7 @@ class RaportsController < ApplicationController
     @raport = Raport.new(params[:raport])
     @ROM = params[:raport].delete(:body)
     @user = User.find_or_create_by_ROM @ROM
+    @raport.user_id = @user.id
       if @raport.save
         redirect_to(users_path)
       end

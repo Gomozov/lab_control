@@ -1,5 +1,13 @@
-<p id="notice"><%= notice %></p>
-
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<h4>User name: <%= @user.name %></h4>
+<div class="row">
+  <div class="span4">
+    <table class="table">
+      <tbody>  
+        <% @user.raports.each do |raport| %>
+          <tr>
+            <td><%= raport.body %></td>
+            <td><%= raport.created_at %></td>
+          </tr>
+        <% end %>
+      </tbody>  
+</table>        

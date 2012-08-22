@@ -9,5 +9,6 @@
 #
 
 class Raport < ActiveRecord::Base
-   attr_accessible :body
+   attr_accessible :body, :user_id
+   belongs_to :user
 end

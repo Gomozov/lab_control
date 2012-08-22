@@ -14,6 +14,7 @@
 
 class User < ActiveRecord::Base
    attr_accessible :name, :email, :cardN, :ROM, :password, :password_confirmation
+   has_many :raports, :dependent => :destroy
 
    validates :ROM, :presence => true, :uniqueness => true
                                         
