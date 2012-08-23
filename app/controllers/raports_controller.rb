@@ -3,7 +3,8 @@ class RaportsController < ApplicationController
 
   def index
     @raports = Raport.all
-
+    @sensorL = Sensor.find(:last, :conditions => {:sensor_name => 'Light'})
+    @sensorT = Sensor.find(:last, :conditions => {:sensor_name => 'Temperature'})
     respond_to do |format|
       format.html
       format.json { render json: @raports }
@@ -12,7 +13,7 @@ class RaportsController < ApplicationController
 
   def show
     @raport = Raport.find(params[:id])
-
+    @sensorL = Sensor.find(:last, :conditions => {:sensor_name => 'Light'})
     respond_to do |format|
       format.html
       format.json { render json: @raport }

@@ -10,9 +10,15 @@
       <tbody>
         <% @raports.each do |raport| %>
           <tr>
-            <td><%= raport.body %></td>
+            <td><i class= "icon-arrow-right"></i>
+              <%= raport.body %></td>
             <td><%= raport.created_at %></td>
           </tr>
         <% end %>
       </tbody>  
-</table>
+    </table>
+  </div>  
+  <div class="span2">
+    <%= @sensorL.sensor_name %> : <%= @sensorL.value %> <br/>
+    <%= @sensorT.sensor_name %> : <%= @sensorT.value %>
+  </div>
