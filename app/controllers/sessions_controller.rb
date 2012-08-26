@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       flash[:success] = "Log in."
-      redirect_to user_path(user)
+      redirect_to reports_path
     else
       flash[:error] = "Invalid email or password"
       @title = "Sign in"

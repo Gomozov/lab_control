@@ -13,3 +13,20 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+$(function () {
+      if ($('#raports').length > 0) {
+          setTimeout(updateComments, 10000);
+            }
+            });
+
+function updateComments() {
+  if ($('.raport').length > 0) {
+        var after = $('.raport:last').attr('data-time');
+        }
+    else {
+          var after = 0;
+        }
+ // var after = $('.raport:last').attr('data-time');
+    $.getScript('/raports.js?after=' + after);
+      setTimeout(updateComments, 10000);
+}

@@ -1,19 +1,17 @@
 class RaportsController < ApplicationController
   before_filter :login_required, :only => [:index, :show, :destroy]
+  respond_to :html, :xml, :json, :js
 
   def index
-    @raports = Raport.all
+    #@raports = Raport.all
+    @raports = Raport.paginate(:page => params[:raport_page], :per_page => 10 )
     @sensorL = Sensor.find(:last, :conditions => {:sensor_name => 'Light'})
     @sensorT = Sensor.find(:last, :conditions => {:sensor_name => 'Temperature'})
-    respond_to do |format|
-      format.html
-      format.json { render json: @raports }
-    end
+    @new_raports = Raport.where("created_at > ?", Time.at(params[:after].to_i + 1))
   end
 
   def show
     @raport = Raport.find(params[:id])
-    @sensorL = Sensor.find(:last, :conditions => {:sensor_name => 'Light'})
     respond_to do |format|
       format.html
       format.json { render json: @raport }
@@ -25,9 +23,11 @@ class RaportsController < ApplicationController
     @ROM = params[:raport].delete(:body)
     @user = User.find_or_create_by_ROM @ROM
     @raport.user_id = @user.id
+    respond_to do |format|
       if @raport.save
-        redirect_to(users_path)
+        format.html {redirect_to(users_path)}
       end
+    end
   end
 
   def destroy

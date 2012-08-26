@@ -1,12 +1,16 @@
-<h2>Log in</h2>
-<%= form_tag sessions_path do %>
-  <div class="field">
-    <%= label_tag :email %>
-    <%= text_field_tag :email, params[:email] %>
-  </div>
-  <div class="field">
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
-  </div>
-  <div class="actions"><%= submit_tag "Log in", :class =>'btn btn-primary' %></div>
-<% end %>
+<div class="row">
+  <div class="span3 offset4">
+  <legend>Log in</legend>
+  <%= form_tag sessions_path do %>
+    <div class="field">
+      <i class= "icon-envelope"></i> 
+      <%= text_field_tag :email, params[:email], :placeholder => "Email" %>
+    </div>
+    <div class="field">
+      <i class= "icon-lock"></i> 
+      <%= password_field_tag :password, params[:password], :placeholder => "Password" %>
+    </div>
+    <div class="actions"><%= submit_tag "Log in", :class =>'btn btn-primary' %></div>
+  <% end %>
+</div>
+</div>

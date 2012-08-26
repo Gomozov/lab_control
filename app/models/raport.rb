@@ -11,4 +11,6 @@
 class Raport < ActiveRecord::Base
    attr_accessible :body, :user_id
    belongs_to :user
+   default_scope :order => 'raports.created_at DESC'
+
 end
