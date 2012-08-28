@@ -1,13 +1,13 @@
-          <tr class="raport" data-time="<%= raport.created_at.to_i %>">
-            <td>
-              <% if raport.body == "BUTTON" %>
-                <i class= "icon-arrow-left"></i>
-              <% else %>
-                <i class= "icon-arrow-right"></i>
-              <% end %>
-              <%= raport.body %>
-            </td>
-            <td>
-              <%= raport.created_at %>
-            </td>
-          </tr>
+<tr class="raport" data-time="<%= raport.created_at.to_i %>">
+  <td>
+    <% if raport.body == "BUTTON" %>
+      <i class= "icon-arrow-left"></i>
+    <% else %>
+      <i class= "icon-arrow-right"></i>
+    <% end %>
+    <%= raport.body %>
+  </td>
+  <td>
+    <%= raport.created_at %>
+  </td>
+</tr>

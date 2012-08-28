@@ -4,10 +4,11 @@ class RaportsController < ApplicationController
 
   def index
     #@raports = Raport.all
-    @raports = Raport.paginate(:page => params[:raport_page], :per_page => 10 )
+    #@raports = Raport.paginate(:page => params[:raport_page], :per_page => 10 )
     @sensorL = Sensor.find(:last, :conditions => {:sensor_name => 'Light'})
     @sensorT = Sensor.find(:last, :conditions => {:sensor_name => 'Temperature'})
-    @new_raports = Raport.where("created_at > ?", Time.at(params[:after].to_i + 1))
+    #@new_raports = Raport.where("created_at > ?", Time.at(params[:after].to_i + 1)).paginate(:page => params[:raport_page], :per_page => 10 )
+    @raports = Raport.where("created_at > ?", Time.at(params[:after].to_i + 1)).paginate(:page => params[:raport_page], :per_page => 10)
   end
 
   def show

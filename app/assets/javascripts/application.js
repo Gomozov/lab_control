@@ -20,7 +20,8 @@ $(function () {
             });
 
 function updateComments() {
-  if ($('.raport').length > 0) {
+    if ($('.raport').length < 10) {
+    if ($('.raport').length > 0) {
         var after = $('.raport:last').attr('data-time');
         }
     else {
@@ -29,4 +30,5 @@ function updateComments() {
  // var after = $('.raport:last').attr('data-time');
     $.getScript('/raports.js?after=' + after);
       setTimeout(updateComments, 10000);
+    }
 }
