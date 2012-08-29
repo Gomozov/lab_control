@@ -13,7 +13,6 @@
       </tbody>  
     </table>
   </div>  
-  <div class="span2 offset2">
-    <%= @sensorL.sensor_name %> : <%= @sensorL.value %> <br/>
-    <%= @sensorT.sensor_name %> : <%= @sensorT.value %>
+  <div class="span2 offset2" id="climate" >
+    <%= render "climate" %>
   </div>

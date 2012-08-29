@@ -27,8 +27,7 @@ function updateComments() {
     else {
           var after = 0;
         }
- // var after = $('.raport:last').attr('data-time');
     $.getScript('/raports.js?after=' + after);
-      setTimeout(updateComments, 10000);
     }
+    setTimeout(updateComments, 10000);
 }
